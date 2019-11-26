@@ -1,4 +1,5 @@
 import _ = require("lodash")
+const sleep = require('util').promisify(setTimeout)
 
 const map = {
     asd1: "qwe1",
@@ -14,7 +15,8 @@ const map = {
 }
 
 async function myawait( asd, qwe ) {
-    setTimeout(()=>{console.log ()}, 100)
+    await sleep(100)
+    //everything after await is processed after all iterations
     console.log( `processing in async await: ${ asd } - ${ qwe }` )
     console.log(`returning asd ${asd}`)
     return asd
@@ -27,6 +29,3 @@ _( map ).forOwn( async ( asd, qwe ) => {
     console.log(`asdRet ${asdRet}`)
     console.log("finish")
 } )
-
-console.log("\n---------------------\n")
-
